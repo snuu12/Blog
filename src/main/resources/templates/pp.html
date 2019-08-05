@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+	<title>TITLE</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+
+
+	<!-- Font -->
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+	<!-- Stylesheets -->
+
+	<link href="common-css/bootstrap.css" rel="stylesheet">
+
+	<link href="common-css/ionicons.css" rel="stylesheet">
+
+	<link href="common-css/layerslider.css" rel="stylesheet">
+
+
+	<link href="01-homepage/css/styles.css" rel="stylesheet">
+
+	<link href="01-homepage/css/responsive.css" rel="stylesheet">
+
+</head>
+<body>
+
+	<header>
+
+
+
+		<div class="middle-menu center-text"><a href="#" class="logo"><img src="images/logo.png" alt="Logo Image"></a></div>
+
+		<div class="bottom-area">
+
+			<div class="menu-nav-icon" data-nav-menu="#main-menu"><i class="ion-navicon"></i></div>
+
+			<ul class="main-menu visible-on-click" id="main-menu">
+
+				<li><a href="#">HOME222</a></li>
+
+			</ul><!-- main-menu -->
+
+		</div><!-- conatiner -->
+	</header>
+
+
+	<div class="main-slider">
+		<div id="slider">
+
+			<div class="ls-slide" data-ls="bgsize:cover; bgposition:50% 50%; duration:4000; transition2d:104; kenburnsscale:1.00;">
+				<img src="images/slider-1-1600x800.jpg" class="ls-bg" alt="" />
+
+			</div><!-- ls-slide -->
+
+			<div class="ls-slide" data-ls="bgsize:cover; bgposition:50% 50%; duration:4000; transition2d:104; kenburnsscale:1.00;">
+				<img src="images/slider-2-1600x800.jpg" class="ls-bg" alt="" />
+
+			</div><!-- ls-slide -->
+
+		</div><!-- slider -->
+	</div><!-- main-slider -->
+
+
+	<section class="section blog-area">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-lg-8 col-md-12">
+					<div class="blog-posts">
+
+
+						<ul class="list-group" th:each="blog: ${blogs}">
+							<li th:inline="text"
+								class="list-group-item d-flex justify-content-between align-items-center">
+								<h3 class="title"><a href="#"><b class="light-color">[[${blog.name}]]</b></a></h3>
+<!--								[[${blog.name}]]-->
+
+								<p>[[${blog.contents}]]</p>
+								<a class="btn read-more-btn" th:href="'/blog/'+${blog.id}"><b>READ MORE</b></a>
+
+							</li>
+						</ul>
+
+
+						</div><!-- single-post -->
+
+					<form action="/add" method="post" th:object="${blog}">
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Title</label>
+							<div class="col-sm-10">
+								<input th:field="*{name}" type="text" class="form-control"
+									   placeholder="Name" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Contents</label>
+							<div class="col-sm-10">
+<!--								<input th:field="*{contents}" type="text" class="form-control" placeholder="Address" required>-->
+								<textarea class="form-control" name="news" th:field="*{contents}" placeholder="News text"></textarea>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-sm-10">
+								<input type="submit" class="btn btn-primary btn-lg" value="Add">
+							</div>
+						</div>
+					</form>
+
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+	<footer>
+		<div class="container">
+			<div class="row">
+
+				<div class="col-sm-6">
+					<div class="footer-section">
+
+					</div><!-- footer-section -->
+				</div><!-- col-lg-4 col-md-6 -->
+
+				<div class="col-sm-6">
+					<div class="footer-section">
+						<ul class="social-icons">
+							<li><a href="#"><i class="ion-social-facebook-outline"></i></a></li>
+							<li><a href="#"><i class="ion-social-twitter-outline"></i></a></li>
+							<li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+							<li><a href="#"><i class="ion-social-vimeo-outline"></i></a></li>
+							<li><a href="#"><i class="ion-social-pinterest-outline"></i></a></li>
+						</ul>
+					</div><!-- footer-section -->
+				</div><!-- col-lg-4 col-md-6 -->
+
+			</div><!-- row -->
+		</div><!-- container -->
+	</footer>
+
+
+	<!-- SCIPTS -->
+
+	<script src="common-js/jquery-3.1.1.min.js"></script>
+
+	<script src="common-js/tether.min.js"></script>
+
+	<script src="common-js/bootstrap.js"></script>
+
+	<script src="common-js/layerslider.js"></script>
+
+	<script src="common-js/scripts.js"></script>
+
+</body>
+</html>
